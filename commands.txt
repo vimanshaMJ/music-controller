@@ -5,3 +5,4 @@ cd .\music_controller\
 django-admin startapp api
 python .\manage.py makemigrations
 .\manage.py migrate  //database created
+python .\manage.py runserver  -> ctrl+click
