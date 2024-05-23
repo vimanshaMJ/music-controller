@@ -1,0 +1,5 @@
+// in terminal:
+pip install django djangorestframework
+django-admin startproject music-controller
+cd .\music_controller\                 
+django-admin startapp api
