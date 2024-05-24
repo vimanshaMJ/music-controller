@@ -6,3 +6,8 @@ django-admin startapp api
 python .\manage.py makemigrations
 .\manage.py migrate  //database created
 python .\manage.py runserver  -> ctrl+click
+
+
+//what django allow us to do is write python code and then it will interpret that python code and 
+automatically perform all of the databases for us
+
