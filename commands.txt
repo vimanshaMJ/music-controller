@@ -11,3 +11,8 @@ python .\manage.py runserver  -> ctrl+click
 //what django allow us to do is write python code and then it will interpret that python code and 
 automatically perform all of the databases for us
 
+// basic rule in django - we want to have fat models and thin views
+
+create model in models.py
+python .\manage.py makemigrations
+.\manage.py migrate  //room created
