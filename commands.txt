@@ -16,3 +16,21 @@ automatically perform all of the databases for us
 create model in models.py
 python .\manage.py makemigrations
 .\manage.py migrate  //room created
+
+// frontend
+npm  // to see that npm works
+django-admin startapp frontend
+//create folders:
+    frontend -> templates
+                static -> frontend, css, images
+                src -> components
+
+cd .\frontend\
+npm init -y
+npm i webpack webpack-cli --save-dev
+npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+npm i react react-dom --save-dev
+npm install @mui/material @emotion/react @emotion/styled
+npm install @babel/plugin-proposal-class-properties
+npm install react-router-dom
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
