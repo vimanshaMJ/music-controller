@@ -1,5 +1,5 @@
-import React, { Component } from "React";
-import render from "react-dom";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
 export default class App extends Component {
   constructor(props) {
@@ -7,11 +7,7 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h1>Testing react code</h1>
-      </div>
-    );
+    return <h1>Testing react code</h1>;
   }
 }
 
