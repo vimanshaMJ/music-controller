@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RoomJoinPage from "./RoomJoinPage";
+import CreateRoomPage from "./CreateRoomPage";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -7,9 +10,13 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <div>
-        <p>This is the Home Page</p>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/join" element={<RoomJoinPage />} />
+          <Route path="/create" element={<CreateRoomPage />} />
+          <Route path="/" element={<p>This is the homepage</p>} />
+        </Routes>
+      </Router>
     );
   }
 }
