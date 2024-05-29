@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class RoomJoinPage extends Component {
+export default class CreateRoomPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -8,7 +8,7 @@ export default class RoomJoinPage extends Component {
   render() {
     return (
       <div>
-        <p>This is the Room Join Page</p>
+        <p>This is the Create Room Page</p>
       </div>
     );
   }
