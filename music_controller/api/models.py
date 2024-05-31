@@ -17,7 +17,7 @@ def gererate_unique_code():
 
 # Create your models here:
 class Room(models.Model):
-   code = models.CharField(max_length=8, default="", unique=True)   # code-unique code that identifie a room
+   code = models.CharField(max_length=8, default=gererate_unique_code, unique=True)   # code-unique code that identifie a room
    host = models.CharField(max_length=50, unique=True)  #one host for one room, one host cannot have multiple rooms
    # host field - store some kinda information, essentially relates to our host
 

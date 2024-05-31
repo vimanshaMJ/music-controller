@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Room
 
+# Serialization is the process of converting complex data into a format that can be easily transmitted and stored.
+
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room

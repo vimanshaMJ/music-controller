@@ -3,11 +3,11 @@ from rest_framework import generics, status
 from .models import Room
 from .serializers import RoomSerializer, CreateRoomSerializer
 from rest_framework.views import APIView
-from rest_framework.response import responses
+from rest_framework.response import Response
 
 # Create your views here.
 
-class Roomview(generics.ListAPIView):
+class RoomView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     
@@ -16,5 +16,29 @@ class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
     def post(self, request, format=None):
-        pass
+        # check if the current user has an active session with our web server. If not, create
+        if not self.request.session.exists(self.request.session.session_key):  
+            self.request.session.create()
+
+        serializer = self.serializer_class(date = request.data)
+        if serializer.is_valid():
+            guest_can_pause = serializer.data.get('guest_can_pause')
+            votes_to_skip = serializer.data.get('votes_to_skip')
+            host = self.request.session.session_key
+
+            queryset = Room.objects.filter(host = host)
+
+            if queryset.exists():  # the case if we're updating the room
+                room = queryset[0]
+                room.guest_can_pause = guest_can_pause
+                room.votes_to_skip = votes_to_skip
+                room.save(update_fields = ['guest_can_pause', 'votes_to_skip'])  # pass the update fields
+                return Response(RoomSerializer(room).data, status=status.HTTP_200_OK)
+
+            else: # if not update room, we're creating a new room
+                room = Room(host = host, guest_can_pause = guest_can_pause, votes_to_skip = votes_to_skip)
+                room.save()
+                return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
+        
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
     
